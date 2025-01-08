@@ -100,7 +100,7 @@ const AddToCart_Buy = () => {
   useEffect(() => {
     const productDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/product-details/${id}`, {
+        const response = await fetch(`https://e-commerce-wheat-three-84.vercel.app/product-details/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -185,7 +185,7 @@ const AddToCart_Buy = () => {
 
 
   const addToCart = async () => {
-    const response = await fetch('http://localhost:3000/add-item-to-cart', {
+    const response = await fetch('https://e-commerce-wheat-three-84.vercel.app/add-item-to-cart', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
