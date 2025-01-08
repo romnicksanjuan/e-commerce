@@ -5,6 +5,9 @@ import '../css/AddToCart_Buy.css'
 import { GoPlus } from "react-icons/go";
 import { PiMinus } from "react-icons/pi";
 
+// domain
+import DOMAIN from '../../config/config'
+
 const AddToCart_Buy = () => {
   const [item, setItem] = useState({})
   const [image, setImage] = useState('')
@@ -100,7 +103,7 @@ const AddToCart_Buy = () => {
   useEffect(() => {
     const productDetails = async () => {
       try {
-        const response = await fetch(`https://e-commerce-wheat-three-84.vercel.app/product-details/${id}`, {
+        const response = await fetch(`${DOMAIN}/product-details/${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -185,7 +188,7 @@ const AddToCart_Buy = () => {
 
 
   const addToCart = async () => {
-    const response = await fetch('https://e-commerce-wheat-three-84.vercel.app/add-item-to-cart', {
+    const response = await fetch(`${DOMAIN}/add-item-to-cart`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

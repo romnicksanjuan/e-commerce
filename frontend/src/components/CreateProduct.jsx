@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import style from '../css/CreateProduct.module.css'
 
+// domain
+import DOMAIN from '../../config/config'
+
 const CreateProduct = () => {
 
     const [colorVariants, setColorVariants] = useState([
@@ -58,7 +61,7 @@ const CreateProduct = () => {
 
         e.preventDefault()
         try {
-            const response = await fetch('http://localhost:3000/create-product', {
+            const response = await fetch(`${DOMAIN}/create-product`, {
                 method: 'POST',
                 body: formData
             })

@@ -11,6 +11,9 @@ import side_banner1 from '../images/banners/side-banner1.jpg'
 import side_banner2 from '../images/banners/side-banner2.jpg'
 import { useNavigate } from 'react-router-dom'
 
+// domain
+import DOMAIN from '../../config/config'
+
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
@@ -27,7 +30,7 @@ const Main = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const response = await fetch('https://e-commerce-wheat-three-84.vercel.app/get-all-product', {
+                const response = await fetch(`${DOMAIN}/get-all-product`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

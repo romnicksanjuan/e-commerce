@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import style from '../css/Cart.module.css'
+
+// domain
+import DOMAIN from '../../config/config'
 const Cart = () => {
     const [cart, setCart] = useState([])
     const [img, setImg] = useState([])
@@ -8,7 +11,7 @@ const Cart = () => {
 
     useEffect(() => {
         const getCart = async () => {
-            const response = await fetch('http://localhost:3000/cart', {
+            const response = await fetch(`${DOMAIN}/cart`, {
                 method: 'GET',
             })
             // console.log(response)
