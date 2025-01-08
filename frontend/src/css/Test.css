@@ -1,0 +1,71 @@
+.unavailable {
+    color: gray;
+    pointer-events: none;
+}
+
+.available {
+    color: greenyellow;
+}
+
+.border {
+    border: 1px solid red;
+}
+
+.container {
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+    background-color: orange;
+}
+
+/* button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 5s ease, transform 0.3s ease-in-out ,color 5s ease;
+}
+
+button:hover {
+    background-color: #253e4f;
+    transform: scale(1.1);
+    color: #ff0505;
+} */
+
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    background-color: #ff0505;
+    transition: background-color 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #db3434;
+}
+
+.container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: #f4f4f4;
+    overflow: hidden; /* Prevent the sliding div from being visible outside */
+    border: 1px solid #ccc;
+  }
+
+  .sliding-div {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    transform: translateX(-150%); 
+    transition: transform 0.5s ease, background-color 0.5s ease-in;
+  }
+
+  .container.active .sliding-div {
+    transform: translateX(0); /* Slide into view */
+    background-color: #ff0505;
+  }

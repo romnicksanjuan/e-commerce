@@ -1,0 +1,105 @@
+.mainCartContainer {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin: 20px auto 20px auto;
+    height: 70px;
+    padding: 0 20px;
+    border-radius: 5px;
+    
+}
+
+.checkBoxAll {
+    display: flex;
+    justify-content: center;
+    width: 10%;
+}
+
+.productTitle {
+    display: flex;
+    width: 100%;
+}
+
+.productDetailsTitle {
+    display: flex;
+    width: 100%;
+    /* justify-content: center; */
+}
+
+.productDetailsInnerContainer {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.productDetailsInnerContainer p{
+    color: gray;
+    font-size: 15px;
+
+}
+
+
+.itemMainContainer {
+    /* display: flex; */
+    width: 100%;
+    background-color: white;
+    height: auto;
+    margin-top: 10px;
+    padding: 0 20px;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+}
+
+.itemContainer {
+    /* background-color: red; */
+    /* margin: 20px 0 20px 0; */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    padding: 10px 0 10px 0;
+}
+
+.itemCheckBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+}
+.productItemContainer{
+    display: flex;
+    width: 100%;
+    /* background-color: green; */
+}
+.productItemContainer p{
+    color:black;
+    margin:10px 0 0 10px;
+    font-size:15px;
+    font-weight: 500;
+}
+
+
+.itemDetailsTitle{
+    display: flex;
+    width: 100%;
+}
+
+.itemDetailsInnerContainer{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.itemDetailsInnerContainer p{
+    color: black;
+    font-size: 16px;
+}
+

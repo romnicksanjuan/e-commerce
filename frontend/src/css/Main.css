@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.main-container {
+    width: 90%;
+    margin: 0 auto;
+    background-color: whitesmoke;
+}
+
+.banners-container {
+    display: flex;
+    margin: 20px 0 20px 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-banner-container {
+    width: 80%;
+    height: 250px;
+    background-color: yellow;
+    overflow: hidden;
+    /* border: 2px solid black; */
+    position: relative;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.left-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.main-banner-container:hover .left-icon , .main-banner-container:hover .right-icon {
+    opacity: 1;
+}
+
+.right-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+
+
+.banner-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    /* transform: translate-x(2 * 100%); */
+    /* style={{ transform: `translateX(-${currentIndex * 100}%)` }} */
+    /* Sliding animation */
+}
+
+
+.banner-slide {
+    min-width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 5px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #dc1717;
+}
+
+.side-banner-container {
+    width: 40%;
+    height: auto;
+    cursor: pointer;
+    /* background-color: grey; */
+    /* border: 1px solid black ; */
+}
+
+.daily-discover {
+    color: #dc1717;
+    text-align: center;
+    border-bottom: 3px solid #dc1717;
+    padding: 20px;
+    position: sticky;
+    background-color: white;
+    top: 140px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.main-sub-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.parent {
+    /* flex: calc(25% - 10px); */
+    /* 25% width minus the gap */
+    width: 100%;
+    height: auto;
+    border: 1px solid rgb(206, 202, 202);
+    background-color: white;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: auto;
+    height: auto;
+}
+
+.title-area {
+    position: relative;
+    width: 100%;
+    /* background-color: aqua; */
+    margin: 0 auto;
+    height: 120px;
+    /* padding: 5px 10px 10px 10px; */
+    background-color: white;
+}
+
+.name {
+    display: -webkit-box;
+    /* Use a flexible box layout for multi-line truncation */
+    -webkit-line-clamp: 3;
+    /* Limits text to 3 lines */
+    -webkit-box-orient: vertical;
+    /* Specifies vertical box orientation */
+    overflow: hidden;
+    /* Hides the overflow content */
+    /* text-overflow: ellipsis; */
+    font-size: 1vw;
+    margin: 5px 10px 5px 10px;
+    color: #000000;
+}
+
+
+.price-sold-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+}
+
+.price {
+    color: #dc1717;
+    font-size: 0.9vw;
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.sold {
+    color: #000000;
+    font-size: 0.9vw;
+    margin-right: 10px;
+}
+
+/* mobile size */
+
+@media (max-width: 768px) {
+    .main-sub-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .parent {
+        /* flex: calc(25% - 10px); */
+        /* 25% width minus the gap */
+        width: 100%;
+        height: auto;
+    }
+
+    .image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        width: auto;
+        height: auto;
+    }
+
+
+
+    .title-area {
+        position: relative;
+        width: 100%;
+        /* background-color: aqua; */
+        margin: 0 auto;
+        height: 60px;
+        /* padding: 5px 10px 10px 10px; */
+        background-color: white;
+    }
+
+    .title {
+        display: -webkit-box;
+        /* Use a flexible box layout for multi-line truncation */
+        -webkit-line-clamp: 3;
+        /* Limits text to 3 lines */
+        -webkit-box-orient: vertical;
+        /* Specifies vertical box orientation */
+        overflow: hidden;
+        /* Hides the overflow content */
+        /* text-overflow: ellipsis; */
+        font-size: 1vw;
+        margin: 5px 10px 5px 10px;
+    }
+
+
+    .price-sold-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        width: 100%;
+        position: absolute;
+        bottom: 5px;
+    }
+
+    .price {
+        color: #dc1717;
+        font-size: 1vw;
+        margin-bottom: 0;
+        margin-left: 10px;
+    }
+
+    .sold {
+        color: #000000;
+        font-size: 1vw;
+        margin-right: 10px;
+    }
+}
+
+
+@media (max-width: 426px) {
+    .title-area {
+        position: relative;
+        width: 100%;
+        /* background-color: aqua; */
+        margin: 0 auto;
+        height: 40px;
+        /* padding: 5px 10px 10px 10px; */
+        background-color: white;
+    }
+}

@@ -1,0 +1,246 @@
+.product-container {
+    /* width: 90%; */
+    display: flex;
+    /* justify-content: space-around; */
+    height: auto;
+    max-width: 80%;
+    background-color: white;
+    margin: 10px auto 0 auto;
+    padding: 10px;
+}
+
+.image-section {
+    width: 40%;
+    height: auto;
+    /* background-color: blue; */
+}
+
+.image-section img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+
+.product-datails-section {
+    width: 50%;
+    margin-left: 30px;
+    height: auto;
+    /* background-color: yellow; */
+}
+
+.title-product {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: Sans-serif Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.product-datails-section .price-product {
+    color: #dc1717;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 20px
+}
+
+.color-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+    /* background-color: rgb(255, 255, 255); */
+}
+
+.color-title-container {
+    margin-left: 20px;
+    width: 150px;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.color-container p {
+    color: gray;
+    cursor: pointer;
+}
+
+.color-variants {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /* background-color: rebeccapurple; */
+    gap: 10px;
+}
+
+.colors {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 5px;
+    border: 1px solid gray;
+    background-color: rgb(255, 255, 255);
+}
+
+.colors.isClick {
+    border: 1px solid #dc1717;
+}
+
+.colors.default {
+    border: 1px solid gray;
+}
+
+
+.color-images {
+    height: auto;
+    width: 30%;
+}
+
+.colors p {
+    margin: 0;
+    color: black;
+
+}
+
+.sizes-container {
+    display: flex;
+    width: 100%;
+    margin: 50px 0 50px 0;
+    cursor: pointer;
+}
+
+.size-title-container {
+    margin-left: 20px;
+    width: 150px;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.sizes-container p {
+    color: gray;
+    cursor: pointer;
+}
+
+.size-sub-container-1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /* background-color: rebeccapurple; */
+    gap: 10px;
+}
+
+.sizes {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+}
+
+.sizes.isClick {
+    border: 1px solid #dc1717;
+}
+
+.sizes.default {
+    border: 1px solid gray;
+}
+
+.sizes-container .size-sub-container-1 p {
+    color: black;
+}
+
+
+.quantity-container {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    margin: 50px 0 50px 0;
+}
+
+.quantity-title {
+    color: gray;
+}
+
+.quantity-sub-container {
+    display: flex;
+    width: 100%;
+    /* background-color: #dc1717; */
+}
+
+.minus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 50px;
+    border: 1px solid gray;
+    background-color: whitesmoke;
+}
+
+.quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 70px;
+    border: 1px solid gray;
+    background-color: whitesmoke;
+}
+
+.quantity-title-container {
+    margin-left: 20px;
+    width: 150px;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.quantity p {
+    color: black;
+}
+
+.plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 50px;
+    border: 1px solid gray;
+    background-color: whitesmoke;
+}
+
+
+.pieces {
+    color: black;
+    margin-left: 10px;
+}
+
+
+.checkOutButton-container {
+    display: flex;
+    width: 100%;
+    margin: 40px 0 40px 20px;
+    gap: 20px;
+
+}
+
+.addToCartButton {
+    height: 50px;
+    width: 30%;
+    border: 1px solid #dc1717;
+    color: #dc1717;
+    font-size: 17px;
+}
+
+.buyNowButton {
+    height: 50px;
+    width: 30%;
+    background-color: #dc1717;
+    border: none;
+    color: white;
+    font-size: 17px;
+}
