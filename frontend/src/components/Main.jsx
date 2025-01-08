@@ -27,7 +27,7 @@ const Main = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
-                const response = await fetch('http://localhost:3000/get-all-product', {
+                const response = await fetch('https://e-commerce-wheat-three-84.vercel.app/get-all-product', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
