@@ -24,6 +24,8 @@ const Main = () => {
     const [data, setData] = useState([])
     const [img, setImg] = useState([])
 
+    const [loading,setLoading] = useState(false)
+
     const navigate = useNavigate()
     const [base64Images, setBase64Images] = useState();
 
@@ -33,6 +35,7 @@ const Main = () => {
     useEffect(() => {
         const getProduct = async () => {
             try {
+                setLoading(!loading)
                 const response = await fetch(`${DOMAIN}/get-all-product`, {
                     method: 'GET',
                     headers: {
@@ -54,6 +57,7 @@ const Main = () => {
                 // console.log(data.img)
                 setImg(data.img)
                 setData(data.product)
+                setLoading(loading)
             } catch (error) {
                 console.log(error)
             }
@@ -146,7 +150,7 @@ const Main = () => {
                 <p className='daily-discover'>DAILY DISCOVER</p>
 
 
-                {!data ? <LoadingAnimation /> :
+                {loading ? <LoadingAnimation /> :
                     <div className='main-sub-container'>
                         {data.map((data, index) => (
                             <div key={data._id} className="parent" onClick={() => handleToAddOrBuyPageClick(data)}>
