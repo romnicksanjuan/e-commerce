@@ -1,0 +1,45 @@
+/* Loading Animation Styles */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    /* background-color: #f8f8f8; */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .rect {
+    width: 8px;
+    height: 25px;
+    margin: 0 5px;
+    background-color: red;
+    animation: bounce 1.2s infinite;
+  }
+  
+  .rect:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .rect:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  .rect:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+  
+  .rect:nth-child(5) {
+    animation-delay: 0.8s;
+  }
+  
+  @keyframes bounce {
+    0%, 40%, 100% {
+      transform: scaleY(1);
+    }
+    20% {
+      transform: scaleY(2);
+    }
+  }
+  

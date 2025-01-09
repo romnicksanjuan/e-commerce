@@ -9,35 +9,6 @@ const Header = ({ result }) => {
     const navigate = useNavigate()
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
-    // const [debouncedQuery, setDebouncedQuery] = useState('');
-
-
-
-    // const handleSendFunction = (event) => {
-    //     event.preventDefault();
-    //     console.log(query)
-    //     result(query)
-    // }
-
-    // useEffect(() => {
-    //     const timer = setTimeout(() => setDebouncedQuery(query), 300);
-    //     return () => clearTimeout(timer); 
-    // }, [query]);
-
-    // useEffect(() => {
-    //     const fetchResults = async () => {
-    //         if (debouncedQuery.trim()) {
-    //             try {
-    //                 const response = await fetch(`$${DOMAIN}/api/search?q=${debouncedQuery}`);
-    //                 const data = await response.json();
-    //                 setResults(data);
-    //             } catch (err) {
-    //                 console.error('Error fetching search results:', err);
-    //             }
-    //         }
-    //     };
-    //     fetchResults();
-    // }, [debouncedQuery]);
 
 
     const handleSendFunction = async (event) => {

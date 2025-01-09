@@ -14,6 +14,9 @@ import { useNavigate } from 'react-router-dom'
 // domain
 import DOMAIN from '../../config/config'
 
+// Loading
+import LoadingAnimation from './Loading'
+
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
@@ -74,17 +77,17 @@ const Main = () => {
 
 
     const leftButton = () => {
-        setCurrentIndex(prev => prev < 1 ? banners.length - 1 : prev - 1 )
+        setCurrentIndex(prev => prev < 1 ? banners.length - 1 : prev - 1)
     }
 
     const rightButton = () => {
-        setCurrentIndex(prev => prev === banners.length - 1 ? 0 : prev + 1 )
+        setCurrentIndex(prev => prev === banners.length - 1 ? 0 : prev + 1)
     }
 
 
-    const [result,setResult] = useState('')
+    const [result, setResult] = useState('')
     // recieve result firom header
-    const handleRecievefunction = (data) =>{
+    const handleRecievefunction = (data) => {
         console.log(data)
         setImg(data.img)
         setData(data.products)
@@ -143,25 +146,28 @@ const Main = () => {
                 <p className='daily-discover'>DAILY DISCOVER</p>
 
 
-                <div className='main-sub-container'>
-                    {data.map((data, index) => (
-                        <div key={data._id} className="parent" onClick={() => handleToAddOrBuyPageClick(data)}>
+                {!data ? <LoadingAnimation /> :
+                    <div className='main-sub-container'>
+                        {data.map((data, index) => (
+                            <div key={data._id} className="parent" onClick={() => handleToAddOrBuyPageClick(data)}>
 
 
-                            <img src={img[index]} alt="" className="image" />
+                                <img src={img[index]} alt="" className="image" />
 
-                            <div className='title-area'>
-                                <p className='name'>{data.title}</p>
+                                <div className='title-area'>
+                                    <p className='name'>{data.title}</p>
 
-                                <div className='price-sold-container'>
-                                    <p className='price'>₱{data.price}</p>
-                                    <p className='sold'>3k sold</p>
+                                    <div className='price-sold-container'>
+                                        <p className='price'>₱{data.price}</p>
+                                        <p className='sold'>3k sold</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
 
-                </div>
+                    </div>
+
+                }
             </div>
         </>
     )
