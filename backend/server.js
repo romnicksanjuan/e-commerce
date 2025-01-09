@@ -14,10 +14,10 @@ mongoose.connect(MOGNG_DB)
         console.log('connected to database')
     })
     .catch((err) => console.log(err))
-
-
+// http://localhost:5173
+// https://e-commerce-x81l.vercel.app
 app.use(cors({
-    origin: 'http://localhost:5173', // Allow requests from the React app (Vite default port)
+    origin: 'https://e-commerce-x81l.vercel.app', // Allow requests from the React app (Vite default port)
     methods: ['GET', 'POST','PUT','DELETE'],       // Allow specific HTTP methods
     credentials: true,
 }))
