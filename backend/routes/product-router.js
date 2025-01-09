@@ -1,6 +1,6 @@
 const express = require('express')
 const productRouter = express.Router()
-const { createProduct, getAllProduct, getProductDetails, Test, addToCart,getCart } = require('../controller/product-controller')
+const { createProduct, getAllProduct, getProductDetails, Test, addToCart,getCart, searchProduct } = require('../controller/product-controller')
 const multer = require('multer');
 
 
@@ -19,5 +19,6 @@ productRouter.get('/product-details/:id', getProductDetails)
 productRouter.get('/test', Test)
 productRouter.post('/add-item-to-cart', addToCart)
 productRouter.get('/cart', getCart)
+productRouter.get('/search', searchProduct)
 
 module.exports = productRouter

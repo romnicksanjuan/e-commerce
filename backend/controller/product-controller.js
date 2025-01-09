@@ -93,7 +93,7 @@ const getAllProduct = async (req, res) => {
         const product = await Product.find({}).populate('variants')
         console.log(product)
 
-        const imageBuffer = product.map((p,index) => {
+        const imageBuffer = product.map((p, index) => {
             const convert = p.images[0].data.toString('base64')
             const imageSrc = `data:${p.images[0].contentType};base64,${convert}`;
             // console.log(imageSrc)
@@ -120,7 +120,7 @@ const getAllProduct = async (req, res) => {
         // const image = `data:${l.contentType};base64,${convert}`;
 
 
-        res.json({ product: product, img: imageBuffer})
+        res.json({ product: product, img: imageBuffer })
     } catch (error) {
         console.log(error)
     }
@@ -248,5 +248,30 @@ const getCart = async (req, res) => {
     }
 }
 
+const searchProduct = async (req, res) => {
+    try {
+        const query = req.query.q; // Search keyword from the query parameter
+        const products = await Product.find({
+            title: { $regex: query, $options: 'i' }, // Case-insensitive partial match
+        }).populate('variants');
 
-module.exports = { createProduct, getAllProduct, getProductDetails, Test, addToCart, getCart }
+
+        const imageBuffer = products.map((p, index) => {
+            const convert = p.images[0].data.toString('base64')
+            const imageSrc = `data:${p.images[0].contentType};base64,${convert}`;
+            // console.log(imageSrc)
+
+            return imageSrc
+        })
+
+        // console.log(imageBuffer)
+
+        // console.log('result',products)
+        res.json({products:products, img: imageBuffer});
+    } catch (err) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
+module.exports = { createProduct, getAllProduct, getProductDetails, Test, addToCart, getCart,searchProduct }

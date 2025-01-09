@@ -17,7 +17,7 @@ mongoose.connect(MOGNG_DB)
 
 
 app.use(cors({
-    origin: 'https://e-commerce-x81l.vercel.app', // Allow requests from the React app (Vite default port)
+    origin: 'http://localhost:5173', // Allow requests from the React app (Vite default port)
     methods: ['GET', 'POST','PUT','DELETE'],       // Allow specific HTTP methods
     credentials: true,
 }))

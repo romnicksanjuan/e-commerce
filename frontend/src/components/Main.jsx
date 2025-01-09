@@ -48,7 +48,7 @@ const Main = () => {
 
                 // console.log(data.map(d => d.images))
 
-                console.log(data.img)
+                // console.log(data.img)
                 setImg(data.img)
                 setData(data.product)
             } catch (error) {
@@ -81,9 +81,18 @@ const Main = () => {
         setCurrentIndex(prev => prev === banners.length - 1 ? 0 : prev + 1 )
     }
 
+
+    const [result,setResult] = useState('')
+    // recieve result firom header
+    const handleRecievefunction = (data) =>{
+        console.log(data)
+        setImg(data.img)
+        setData(data.products)
+    }
+
     return (
         <>
-            <Header />
+            <Header result={handleRecievefunction} />
             <div className='main-container'>
 
                 <div className='banners-container'>
