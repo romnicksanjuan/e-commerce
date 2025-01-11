@@ -26,7 +26,7 @@ const Header = ({ result }) => {
 
     const handlLogout = () => {
         if (window.confirm("Do you want to logout?")) {
-            navigate('/login')
+            navigate('/')
         }
     }
 
