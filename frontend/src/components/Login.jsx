@@ -51,7 +51,7 @@ function Login() {
                 <div className="login-form">
                     <h2>Log In</h2>
                     <form className="formm">
-                        {message === 'User Login Success' ? <span style={{color:'green'}}>{message}</span> : <span style={{color:'red'}}>{errorMessage}</span>}
+                        {message === 'User Login Success' ? <span style={{color:'green'}}>{message}</span> : <span style={{color:'red'}}>{message}</span>}
                         
                         <input type="text" value={username} placeholder="Username" className="form-input" onChange={(event) => setUsername(event.target.value)} />
                         <input type="password" value={password} placeholder="Password" className="form-input" onChange={(event) => setPassword(event.target.value)} />
