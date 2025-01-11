@@ -198,7 +198,7 @@ const Cart = () => {
                 <div className="footer-content">
                     <p style={{fontSize:'20px',fontWeight:"500"}}>Total ({selectedProducts.length} item): ₱ {total} </p> 
                     <button style={{width:'20%',backgroundColor:'white',height:'50px',border:'none',
-                        color:'red',fontWeight:'500',borderRadius:'5px'}}>Check oUt</button>
+                        color:'red',fontWeight:'500',borderRadius:'5px'}}>Check Out</button>
                 </div>
             </footer>
         </div>

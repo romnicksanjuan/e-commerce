@@ -24,6 +24,12 @@ const Header = ({ result }) => {
         }
     };
 
+    const handlLogout = () => {
+        if (window.confirm("Do you want to logout?")) {
+            navigate('/login')
+        }
+    }
+
 
 
     return (
@@ -40,7 +46,7 @@ const Header = ({ result }) => {
                     <a className='links' href="">Notifications</a>
                     <a className='links' href="">Help</a>
                     <a className='links' href="">English</a>
-                    <a className='links' href="">Log out</a>
+                    <a className='links' href="" onClick={() => handlLogout()}>Log out</a>
                 </div>
             </nav>
 

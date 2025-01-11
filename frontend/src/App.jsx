@@ -7,6 +7,7 @@ import AddToCart_Buy from './components/AddToCart_Buy.jsx';
 import CreateProduct from './components/CreateProduct.jsx';
 import Test from './components/Test.jsx';
 import Cart from './components/Cart.jsx';
+import Login from './components/Login.jsx';
 // import './App.css'
 
 function App() {
@@ -15,8 +16,11 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          {/* login page */}
+          <Route path='/' element={<Login />} />
+
           {/* main page */}
-          <Route path='/' element={< Main />} />
+          <Route path='/main' element={< Main />} />
 
           {/* buy or add to cart page */}
           <Route path='/add-to-cart/buy/:id' element={< AddToCart_Buy />} />
@@ -28,7 +32,9 @@ function App() {
           <Route path='/test' element={< Test />} />
 
           {/* cart page */}
-          <Route path='/cart' element={<Cart />}/>
+          <Route path='/cart' element={<Cart />} />
+
+
         </Routes>
       </BrowserRouter>
     </>

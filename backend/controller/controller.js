@@ -14,4 +14,21 @@ const createUser = async (req, res) => {
     }
 }
 
-module.exports = { createUser }
+const Login = async(req,res) => {
+    const {username,password} = req.body
+    console.log(username,password)
+    try {
+        const find = await User.findOne({password})
+
+        if(find){
+            res.status(200).json({message: 'success'})
+        } else {
+            res.status(404).json({message:'failed'})
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = { createUser,Login }
