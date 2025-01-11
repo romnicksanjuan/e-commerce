@@ -27,7 +27,7 @@ function Login() {
         if(data.message === 'success'){
             console.log('User Login Success')
             setMessage('User Login Success')
-            navigate('/')
+            navigate('/main')
         }else{
             console.log('Incorrect Username or Password')
             setMessage('Incorrect Username or Password')
