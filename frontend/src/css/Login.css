@@ -38,7 +38,9 @@
   
   .login-form {
     flex: 1;
-    padding: 40px;
+    display: flex;
+    align-items: center;
+    /* padding: 40px; */
   }
   
   h2 {
@@ -115,4 +117,38 @@
   .sign-up a {
     color: #fa4a0c;
     text-decoration: none;
+  }
+
+
+  @media (max-width: 426px) {
+    .login-page {
+      display: block;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #fa4a0c;
+    }
+    
+    .login-container {
+      display: block;
+      background: white;
+      width: 90%;
+      /* border-radius: 8px; */
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+
+    .logo-section {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+      color: white;
+      background-color: #fa4a0c;
+    }
+    
+    .logo {
+      width: 50%;
+      margin: 0 auto;
+    }
   }

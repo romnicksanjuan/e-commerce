@@ -72,7 +72,7 @@ const Header = ({ result }) => {
                             value={query}
                             onChange={(e) => setQuery(e.target.value)} style={{border:'none'}}/>
 
-                        <button style={{ height:'40px',width:'10%',borderRadius:'3px',border:'none',backgroundColor:'red',color:'white',fontSize:'14px',
+                        <button style={{ height:'40px',width:'15%',borderRadius:'3px',border:'none',backgroundColor:'red',color:'white',fontSize:'12px',
                             marginRight:'5px',cursor:'pointer'}} onClick={handleSendFunction} type='submit'>Search</button>
                     </form>
                 </div>
