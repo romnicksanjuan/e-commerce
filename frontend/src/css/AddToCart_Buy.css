@@ -50,7 +50,7 @@
     /* align-items: center; */
     width: 100%;
     margin: 20px 0 20px 0;
-    cursor: pointer;
+    /* cursor: pointer; */
     /* background-color: rgb(255, 255, 255); */
 }
 
@@ -63,7 +63,8 @@
 
 .color-container p {
     color: gray;
-    cursor: pointer;
+    /* cursor: pointer; */
+    /* pointer-events: none; */
 }
 
 .color-variants {
@@ -72,6 +73,7 @@
     width: 100%;
     /* background-color: rebeccapurple; */
     gap: 10px;
+    /* pointer-events: none; */
 }
 
 .colors {
@@ -84,6 +86,7 @@
     gap: 5px;
     border: 1px solid gray;
     background-color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .colors.isClick {
@@ -110,7 +113,7 @@
     display: flex;
     width: 100%;
     margin: 50px 0 50px 0;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .size-title-container {
@@ -122,7 +125,7 @@
 
 .sizes-container p {
     color: gray;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .size-sub-container-1 {
@@ -140,6 +143,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid gray;
+    cursor: pointer;
 }
 
 .sizes.isClick {

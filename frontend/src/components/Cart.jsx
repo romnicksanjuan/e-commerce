@@ -75,6 +75,10 @@ const Cart = () => {
 
     const del_Item = async (id) => {
         try {
+            if (!window.confirm('do you want to remove this item')) {
+                return;
+            }
+            
             const response = await fetch(`${DOMAIN}/delete-cart/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Tyoe': 'Application/json' }
@@ -139,9 +143,9 @@ const Cart = () => {
                                </form>
                            </div> */}
 
-                    <div className='shopping-cart' >
+                    {/* <div className='shopping-cart' >
                         <IoCartOutline color='white' onClick={() => navigate('/cart')} />
-                    </div>
+                    </div> */}
                 </div>
             </header>
 
