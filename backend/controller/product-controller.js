@@ -208,6 +208,8 @@ const addToCart = async (req, res) => {
 
     const saveCart = await addNewCart.save()
     // console.log('cart saved successfully:', saveCart)
+    res.json({message: 'item added'})
+    
 }
 
 
@@ -267,11 +269,29 @@ const searchProduct = async (req, res) => {
         // console.log(imageBuffer)
 
         // console.log('result',products)
-        res.json({products:products, img: imageBuffer});
+        res.json({ products: products, img: imageBuffer });
     } catch (err) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
 
+const deleteCart = async (req, res) => {
+    const { id } = req.params
 
-module.exports = { createProduct, getAllProduct, getProductDetails, Test, addToCart, getCart,searchProduct }
+    console.log(id)
+    try {
+        const delCart = await Cart.findByIdAndDelete(id)
+
+        if (delCart) {
+            res.status(200).json({message: 'deleted success'})
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+module.exports = {
+    createProduct, getAllProduct, getProductDetails,
+    Test, addToCart, getCart, searchProduct, deleteCart
+}

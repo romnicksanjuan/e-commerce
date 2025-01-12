@@ -31,22 +31,24 @@ const Header = ({ result }) => {
     }
 
 
-
+    const handleUnavailablePage = () => {
+        alert('this page is not available')
+    }
     return (
         <header className='header'>
             <nav className='nav-bar'>
                 <div className='nav-bar-child'>
-                    <a className='links' href="">Seller Center</a>
-                    <a className='links' href="">Start Selling</a>
-                    <a className='links' href="">Download</a>
-                    <a className='links' href="">Follow us on</a>
+                    <a className='links' href="#" onClick={() => handleUnavailablePage()}>Seller Center</a>
+                    <a className='links' href="#" onClick={() => handleUnavailablePage()}>Start Selling</a>
+                    <a className='links' href="#" onClick={() => handleUnavailablePage()}>Download</a>
+                    <a className='links' href="#" onClick={() => handleUnavailablePage()}>Follow us on</a>
                 </div>
 
                 <div className='nav-bar-child'>
-                    <a className='links' href="">Notifications</a>
-                    <a className='links' href="">Help</a>
-                    <a className='links' href="">English</a>
-                    <a className='links' href="" onClick={() => handlLogout()}>Log out</a>
+                    <a className='links' href="#" onClick={() => handleUnavailablePage()}>Notifications</a>
+                    <a className='links' href="#" onClick={() => handleUnavailablePage()}>Help</a>
+                    <a className='links' href="#" onClick={() => handleUnavailablePage()}>English</a>
+                    <a className='links' href="#" onClick={() => handlLogout()}>Log out</a>
                 </div>
             </nav>
 

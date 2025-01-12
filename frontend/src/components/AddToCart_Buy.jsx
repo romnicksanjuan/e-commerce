@@ -37,8 +37,11 @@ const AddToCart_Buy = () => {
   const [price, setPrice] = useState(null)
 
   const [condition, setCondition] = useState(false)
-  console.log('variant id', variantId)
+  // console.log('variant id', variantId)
   // console.log('condition', condition)
+
+  const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   // choose item
   const handleSelectedColor = (id) => {
 
@@ -47,7 +50,7 @@ const AddToCart_Buy = () => {
     console.log('id:', id)
     setVariantId(id)
 
-    console.log('s', item.variants.length)
+    // console.log('s', item.variants.length)
 
 
 
@@ -55,7 +58,7 @@ const AddToCart_Buy = () => {
 
       if (item.variants[index]._id === id) {
         setSizes(item.variants[index].sizes)
-        console.log('size:', item.variants[index].sizes)
+        // console.log('size:', item.variants[index].sizes)
       }
     }
 
@@ -71,8 +74,8 @@ const AddToCart_Buy = () => {
       })
     })
 
-    console.log('total stock:', total)
-    console.log(item)
+    // console.log('total stock:', total)
+    // console.log(item)
     for (let index = 0; index < item.length; index++) {
       console.log('color', item[index].color)
       // if (item[index]._id === id) {
@@ -123,7 +126,7 @@ const AddToCart_Buy = () => {
         setProductId(data.item._id)
 
         // console.log('product:', data.item)
-        console.log('image', data.image)
+        // console.log('image', data.image)
         // console.log('variant id:', data.item._id)
         setImage(data.image)
         setItem(data.item)
@@ -192,6 +195,12 @@ const AddToCart_Buy = () => {
 
 
   const addToCart = async () => {
+    if (!sizeId) {
+      console.log('size is required')
+      setErrorMessage('Color and Size are required')
+      return;
+    }
+
     const response = await fetch(`${DOMAIN}/add-item-to-cart`, {
       method: 'POST',
       headers: {
@@ -199,6 +208,11 @@ const AddToCart_Buy = () => {
       },
       body: JSON.stringify({ productId, variantId, quantity, sizeId })
     })
+
+    const data = await response.json()
+    if (data.message === 'item added') {
+      setMessage('Item Added to Cart')
+    }
 
   }
 
@@ -223,22 +237,34 @@ const AddToCart_Buy = () => {
       console.error('Error fetching search results:', err);
     }
   };
+
+
+  const handlLogout = () => {
+    if (window.confirm("Do you want to logout?")) {
+      navigate('/')
+    }
+  }
+
+
+  const handleUnavailablePage = () => {
+    alert('this page is not available')
+}
   return (
     <>
       <header className='header'>
         <nav className='nav-bar'>
           <div className='nav-bar-child'>
-            <a className='links' href="">Seller Center</a>
-            <a className='links' href="">Start Selling</a>
-            <a className='links' href="">Download</a>
-            <a className='links' href="">Follow us on</a>
+            <a className='links' href="#" onClick={() => handleUnavailablePage()}>Seller Center</a>
+            <a className='links' href="#" onClick={() => handleUnavailablePage()}>Start Selling</a>
+            <a className='links' href="#" onClick={() => handleUnavailablePage()}>Download</a>
+            <a className='links' href="#" onClick={() => handleUnavailablePage()}>Follow us on</a>
           </div>
 
           <div className='nav-bar-child'>
-            <a className='links' href="">Notifications</a>
-            <a className='links' href="">Help</a>
-            <a className='links' href="">English</a>
-            <a className='links' href="">Log out</a>
+            <a className='links' href="#" onClick={() => handleUnavailablePage()}>Notifications</a>
+            <a className='links' href="#" onClick={() => handleUnavailablePage()}>Help</a>
+            <a className='links' href="#" onClick={() => handleUnavailablePage()}>English</a>
+            <a className='links' href="#" onClick={() => handlLogout()}>Log out</a>
           </div>
         </nav>
 
@@ -274,6 +300,28 @@ const AddToCart_Buy = () => {
           </div>
         </div>
       </header>
+
+      {message ? <div style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80%',
+        margin: '5px auto 0 auto', backgroundColor: 'green', height: '35px', borderRadius: '2px'
+      }}>
+        <p style={{ color: 'white', textAlign: 'center', }}>{message}</p>
+      </div>
+
+        :
+
+        errorMessage && <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80%',
+          margin: '5px auto 0 auto', backgroundColor: 'red', height: '35px', borderRadius: '2px'
+        }}>
+          <p style={{ color: 'white', textAlign: 'center', }}>{errorMessage}</p>
+        </div>
+      }
+
+      {
+      }
+
+
       <section className='product-container'>
         <section className='image-section'>
           <img src={image} alt="" />

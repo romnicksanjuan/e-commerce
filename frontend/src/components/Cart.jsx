@@ -8,18 +8,21 @@ import { IoBagHandleSharp, IoCartOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
 // domain
-import DOMAIN from '../../config/config'
+import DOMAIN from '../../config/config.js'
 const Cart = () => {
     const navigate = useNavigate()
 
     const [cart, setCart] = useState([])
     const [img, setImg] = useState([])
-    const [total,setTotal] = useState(0)
+    const [total, setTotal] = useState(0)
 
 
     const [selectedProducts, setSelectedProducts] = useState([]);
 
-    console.log(selectedProducts)
+
+    const [message, setMessage] = useState('')
+
+    // console.log(selectedProducts)
     const handleCheckboxChange = (event, carts) => {
         const { checked } = event.target;
 
@@ -63,22 +66,51 @@ const Cart = () => {
         }
         getCart()
     }, [])
+
+    const handlLogout = () => {
+        if (window.confirm("Do you want to logout?")) {
+            navigate('/')
+        }
+    }
+
+    const del_Item = async (id) => {
+        try {
+            const response = await fetch(`${DOMAIN}/delete-cart/${id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Tyoe': 'Application/json' }
+            })
+
+            const data = await response.json()
+            if (data.message) {
+                setMessage('Item Removed from Cart')
+                setCart(cart.filter(item => item._id !== id))
+            }
+            console.log(data)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleUnavailablePage = (e) => {
+       window.alert('this page is not available')
+    }
     return (
         <div>
             <header className='header'>
                 <nav className='nav-bar'>
                     <div className='nav-bar-child'>
-                        <a className='links' href="">Seller Center</a>
-                        <a className='links' href="">Start Selling</a>
-                        <a className='links' href="">Download</a>
-                        <a className='links' href="">Follow us on</a>
+                        <a className='links' href="#" onClick={() => handleUnavailablePage()}>Seller Center</a>
+                        <a className='links' href="#" onClick={() => handleUnavailablePage()}>Start Selling</a>
+                        <a className='links' href="#" onClick={() => handleUnavailablePage()}>Download</a>
+                        <a className='links' href="#" onClick={() => handleUnavailablePage()}>Follow us on</a>
                     </div>
 
                     <div className='nav-bar-child'>
-                        <a className='links' href="">Notifications</a>
-                        <a className='links' href="">Help</a>
-                        <a className='links' href="">English</a>
-                        <a className='links' href="">Log out</a>
+                        <a className='links' href="#" onClick={() => handleUnavailablePage()}>Notifications</a>
+                        <a className='links' href="#" onClick={() => handleUnavailablePage()}>Help</a>
+                        <a className='links' href="#" onClick={() => handleUnavailablePage()}>English</a>
+                        <a className='links' href="#" onClick={() => handlLogout()}>Log out</a>
                     </div>
                 </nav>
 
@@ -112,6 +144,15 @@ const Cart = () => {
                     </div>
                 </div>
             </header>
+
+            {message && <div style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center', width: '80%',
+                margin: '5px auto 0 auto', backgroundColor: 'green', height: '35px', borderRadius: '2px'
+            }}>
+                <p style={{ color: 'white', textAlign: 'center', }}>{message}</p>
+            </div>
+            }
+
             <div className={style.mainCartContainer}>
                 <div className={style.title}>
                     <div className={style.checkBoxAll}>
@@ -179,7 +220,7 @@ const Cart = () => {
                                     </div>
 
                                     <div className={style.itemDetailsInnerContainer}>
-                                        <p>Delete</p>
+                                        <p onClick={() => del_Item(carts._id)}>Delete</p>
                                     </div>
                                 </div>
                             ))}
@@ -196,9 +237,11 @@ const Cart = () => {
 
             <footer className="footer">
                 <div className="footer-content">
-                    <p style={{fontSize:'20px',fontWeight:"500"}}>Total ({selectedProducts.length} item): ₱ {total} </p> 
-                    <button style={{width:'20%',backgroundColor:'white',height:'50px',border:'none',
-                        color:'red',fontWeight:'500',borderRadius:'5px'}}>Check Out</button>
+                    <p style={{ fontSize: '20px', fontWeight: "500" }}>Total ({selectedProducts.length} item): ₱ {total} </p>
+                    <button style={{
+                        width: '20%', backgroundColor: 'white', height: '50px', border: 'none',
+                        color: 'red', fontWeight: '500', borderRadius: '5px'
+                    }}>Check Out</button>
                 </div>
             </footer>
         </div>
