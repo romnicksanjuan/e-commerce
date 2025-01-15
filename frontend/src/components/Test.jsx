@@ -29,32 +29,15 @@ const Test = () => {
     console.log('Total price:', totalPrice);
   };
 
+  const [show,setShow] = useState(false)
+  // setShow(true)
+
   return (
-    <div>
+    <div style={{position:'relative', height:'100%',width:'100vh',backgroundColor:'black'}}>
 
-        <LoadingAnimation />
-      <h3>Select Products</h3>
-      {products.map((product) => (
-        <div key={product.id}>
-          <label>
-            <input
-              type="checkbox"
-              onChange={(event) => handleCheckboxChange(event, product)}
-            />
-            {product.name} - ${product.price.toFixed(2)}
-          </label>
-        </div>
-      ))}
-      <button onClick={handleSubmit}>Get Selected Products</button>
+      <div className="loading"></div>
 
-      <h4>Selected Products:</h4>
-      <ul>
-        {selectedProducts.map((product) => (
-          <li key={product.id}>
-            {product.name} - ${product.price.toFixed(2)}
-          </li>
-        ))}
-      </ul>
+      {show ? <p style={{color:'red'}}>Helooo pota</p> : ''}
     </div>
   );
 };

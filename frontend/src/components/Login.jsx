@@ -6,14 +6,28 @@ function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
+    const [loading, setLoading] = useState(false)
+
     const navigate = useNavigate()
 
     const [message, setMessage] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
 
+    useEffect(() => {
+        const reset = () => {
+            setMessage('')
+            setErrorMessage('')
+        }
+
+        reset()
+    }, [username,password])
+
     const handleSubmit = async () => {
+        // console.log(loading)
+        setLoading(!loading)
         if (username === '' || password === '') {
-            setErrorMessage('Please fill all fields')
+            setErrorMessage('Please Enter Username and Password')
+            setLoading(loading)
             return;
         }
         setErrorMessage(null)
@@ -26,7 +40,8 @@ function Login() {
         })
 
         const data = await response.json()
-
+        setLoading(!loading)
+        console.log(!loading)
         console.log(data)
 
         if (data.message === 'success') {
@@ -36,9 +51,11 @@ function Login() {
         } else {
             console.log('Incorrect Username or Password')
             setMessage('Incorrect Username or Password')
+            setLoading(loading)
         }
 
     }
+
 
 
     return (
@@ -55,14 +72,21 @@ function Login() {
                     <p>The leading online shopping platform in Southeast Asia and Taiwan</p>
                 </div>
 
-                <div className="login-form">
-                    <div style={{width:'100%',padding:'10px'}}>
+                <div className={`login-form ${loading ? 'unable' : ''}`}>
+
+
+
+                    <div className={`loading-indicator ${loading ? 'show' : ''}`}></div>
+
+                    <div style={{ width: '100%', padding: '10px', position: 'relative' }}>
+
                         {/* <h2>Log In</h2> */}
 
                         {/* <p style={{color:'black',fontSize:'12px'}}>sample account</p>  */}
-                        <span style={{ color: 'black', fontSize: '16px' }}> username:user</span>
+                        <span style={{ color: 'black', fontSize: '16px', marginRight: '10px' }}> username:user</span>
                         <span style={{ color: 'black', fontSize: '16px' }}> password:user</span>
                         <form className="formm">
+
                             {errorMessage ? <span style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</span> : message === 'User Login Success' ? <span style={{ color: 'green', textAlign: 'center' }}>{message}</span> : <span style={{ color: 'red', textAlign: 'center' }}>{message}</span>}
                             <input type="text" value={username} placeholder="Username" className="form-input" onChange={(event) => setUsername(event.target.value)} />
                             <input type="password" value={password} placeholder="Password" className="form-input" onChange={(event) => setPassword(event.target.value)} />
@@ -82,7 +106,7 @@ function Login() {
                     </div> */}
                     </div>
                 </div>
-                
+
             </div>
         </div>
     );

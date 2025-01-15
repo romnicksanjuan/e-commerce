@@ -1,19 +1,145 @@
 .login-page {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fa4a0c;
+}
+
+.login-container {
+  display: flex;
+  background: white;
+  width: 60%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.logo-section {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  background-color: #fa4a0c;
+}
+
+.logo {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0;
+}
+
+/* p {
+    margin-top: 10px;
+    font-size: 14px;
+  } */
+
+.login-form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* padding: 40px; */
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.formm {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-button {
+  background-color: #fa4a0c;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #d43906;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.form-options a {
+  color: #fa4a0c;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.social-button {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 5px;
+}
+
+.facebook {
+  background-color: #3b5998;
+  color: white;
+}
+
+.google {
+  background-color: #db4437;
+  color: white;
+}
+
+.sign-up {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sign-up a {
+  color: #fa4a0c;
+  text-decoration: none;
+}
+
+
+@media (max-width: 426px) {
+  .login-page {
+    display: block;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #fa4a0c;
   }
-  
+
   .login-container {
-    display: flex;
+    display: block;
     background: white;
-    width: 60%;
-    border-radius: 8px;
+    width: 90%;
+    /* border-radius: 8px; */
     overflow: hidden;
+    margin: 0 auto;
   }
-  
+
+
   .logo-section {
     flex: 1;
     text-align: center;
@@ -21,134 +147,43 @@
     color: white;
     background-color: #fa4a0c;
   }
-  
+
   .logo {
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
   }
-  
-  h1 {
-    margin: 0;
-  }
-  
-  /* p {
-    margin-top: 10px;
-    font-size: 14px;
-  } */
-  
-  .login-form {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    /* padding: 40px; */
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  .formm {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-input {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .login-button {
-    background-color: #fa4a0c;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-button:hover {
-    background-color: #d43906;
-  }
-  
-  .form-options {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .form-options a {
-    color: #fa4a0c;
-    text-decoration: none;
-    font-size: 12px;
-  }
-  
-  .social-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .social-button {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    flex: 1;
-    margin: 0 5px;
-  }
-  
-  .facebook {
-    background-color: #3b5998;
-    color: white;
-  }
-  
-  .google {
-    background-color: #db4437;
-    color: white;
-  }
-  
-  .sign-up {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .sign-up a {
-    color: #fa4a0c;
-    text-decoration: none;
-  }
+}
+
+.loading-indicator{
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3; /* Light gray background border */
+  border-top: 5px solid red; /* Orange border for the indicator */
+  border-radius: 50%; /* Make it a circle */
+  animation: spin 1s linear infinite; /* Spin animation */
+  position: absolute;
+  top: 5%;
+  left: 44%; 
+  transform: translateX(-50%);
+  display: none;
+}
+
+.loading-indicator.show{
+  display: block;
+}
+
+.login-form.unable{
+  pointer-events: none;
+}
 
 
-  @media (max-width: 426px) {
-    .login-page {
-      display: block;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #fa4a0c;
-    }
-    
-    .login-container {
-      display: block;
-      background: white;
-      width: 90%;
-      /* border-radius: 8px; */
-      overflow: hidden;
-      margin: 0 auto;
-    }
 
-
-    .logo-section {
-      flex: 1;
-      text-align: center;
-      padding: 20px;
-      color: white;
-      background-color: #fa4a0c;
-    }
-    
-    .logo {
-      width: 50%;
-      margin: 0 auto;
-    }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

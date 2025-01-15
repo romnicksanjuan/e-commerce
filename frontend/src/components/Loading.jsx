@@ -4,11 +4,7 @@ import '../css/Loading.css';
 const LoadingAnimation = () => {
   return (
     <div className="loading-container">
-      <div className="rect"></div>
-      <div className="rect"></div>
-      <div className="rect"></div>
-      <div className="rect"></div>
-      <div className="rect"></div>
+      <div className="loading"></div>
     </div>
   );
 };

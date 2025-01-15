@@ -69,3 +69,25 @@ input[type="checkbox"]:checked {
     transform: translateX(0); /* Slide into view */
     background-color: #ff0505;
   }
+
+  .loading {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3; /* Light gray background border */
+    border-top: 5px solid orange; /* Orange border for the indicator */
+    border-radius: 50%; /* Make it a circle */
+    animation: spin 1s linear infinite; /* Spin animation */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

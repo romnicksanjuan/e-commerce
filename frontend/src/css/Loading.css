@@ -9,37 +9,21 @@
     left: 50%;
     transform: translateX(-50%);
   }
-  
-  .rect {
-    width: 8px;
-    height: 25px;
-    margin: 0 5px;
-    background-color: red;
-    animation: bounce 1.2s infinite;
+  .loading {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3; /* Light gray background border */
+    border-top: 5px solid red; /* Orange border for the indicator */
+    border-radius: 50%; /* Make it a circle */
+    animation: spin 1s linear infinite; /* Spin animation */
   }
   
-  .rect:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  
-  .rect:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-  
-  .rect:nth-child(4) {
-    animation-delay: 0.6s;
-  }
-  
-  .rect:nth-child(5) {
-    animation-delay: 0.8s;
-  }
-  
-  @keyframes bounce {
-    0%, 40%, 100% {
-      transform: scaleY(1);
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
     }
-    20% {
-      transform: scaleY(2);
+    to {
+      transform: rotate(360deg);
     }
   }
   
