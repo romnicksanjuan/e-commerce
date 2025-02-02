@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import '../css/Login.css'
 import DOMAIN from '../../config/config.js'
+import  {signInWithGoogle}  from "../firebase/firebase.js";
 import { useNavigate } from "react-router-dom";
 function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const [user, setUser] = useState(null);
+    const [loginMethod, setLoginMethod] = useState(null);
 
     const [loading, setLoading] = useState(false)
 
@@ -20,7 +24,8 @@ function Login() {
         }
 
         reset()
-    }, [username,password])
+    }, [username, password])
+
 
     const handleSubmit = async () => {
         // console.log(loading)
@@ -55,7 +60,17 @@ function Login() {
         }
 
     }
+    // navigate('/main')
+    const isSuccess = async () => {
 
+        const check = await signInWithGoogle()
+
+        if (check) {
+            navigate('/main')
+        }
+
+
+    }
 
 
     return (
@@ -99,7 +114,7 @@ function Login() {
                         <p>OR</p>
                         <div className="social-buttons">
                             <button className="social-button facebook">Facebook</button>
-                            <button className="social-button google">Google</button>
+                            <button className="social-button google" onClick={isSuccess}>Google</button>
                         </div>
                         {/* <div className="sign-up">
                         <p>New to Shopee? <a href="#">Sign Up</a></p>

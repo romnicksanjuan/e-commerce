@@ -3,6 +3,7 @@ import '../css/Header.css'
 import { IoBagHandleSharp, IoCartOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import DOMAIN from '../../config/config';
+import { logout } from '../firebase/firebase';
 
 
 const Header = ({ result }) => {
@@ -26,9 +27,12 @@ const Header = ({ result }) => {
 
     const handlLogout = () => {
         if (window.confirm("Do you want to logout?")) {
+            logout()
             navigate('/')
         }
     }
+
+
 
 
     const handleUnavailablePage = () => {
