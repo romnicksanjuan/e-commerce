@@ -145,7 +145,7 @@ function Login() {
                         <form className="formm">
 
                             {errorMessage ? <span style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</span> : message === 'User Login Success' ? <span style={{ color: 'green', textAlign: 'center' }}>{message}</span> : <span style={{ color: 'red', textAlign: 'center' }}>{message}</span>}
-                            <input type="text" value={email} placeholder="email" className="form-input" onChange={(event) => setEmail(event.target.value)} />
+                            <input type="email" value={email} placeholder="email" className="form-input" onChange={(event) => setEmail(event.target.value)} />
                             <input type="password" value={password} placeholder="Password" className="form-input" onChange={(event) => setPassword(event.target.value)} />
                             <button type="button" className="login-button" onClick={() => handleSubmit()}>LOG IN</button>
                         </form>
