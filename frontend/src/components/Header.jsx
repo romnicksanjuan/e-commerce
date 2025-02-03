@@ -3,7 +3,7 @@ import '../css/Header.css'
 import { IoBagHandleSharp, IoCartOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 import DOMAIN from '../../config/config';
-import { logout } from '../firebase/firebase';
+import { logout } from '../firebase/firebase.js';
 
 
 const Header = ({ result }) => {
@@ -25,9 +25,15 @@ const Header = ({ result }) => {
         }
     };
 
-    const handlLogout = () => {
+    const handlLogout = async() => {
         if (window.confirm("Do you want to logout?")) {
             logout()
+          const res =  await fetch(`${DOMAIN}/logout`,{
+                method:'POST',
+                credentials:'include'
+            })
+            const data = await res.json()
+            console.log(data)
             navigate('/')
         }
     }

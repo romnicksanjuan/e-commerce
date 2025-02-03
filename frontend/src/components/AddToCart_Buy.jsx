@@ -206,6 +206,7 @@ const AddToCart_Buy = () => {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: "include",
       body: JSON.stringify({ productId, variantId, quantity, sizeId })
     })
 
@@ -248,7 +249,7 @@ const AddToCart_Buy = () => {
 
   const handleUnavailablePage = () => {
     alert('this page is not available')
-}
+  }
   return (
     <>
       <header className='header'>

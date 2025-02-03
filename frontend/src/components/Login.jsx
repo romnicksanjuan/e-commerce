@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import '../css/Login.css'
 import DOMAIN from '../../config/config.js'
-import  {signInWithGoogle}  from "../firebase/firebase.js";
+import { signInWithGoogle, signInWithFaceBook } from "../firebase/firebase.js";
 import { useNavigate } from "react-router-dom";
 function Login() {
-    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const [user, setUser] = useState(null);
@@ -22,26 +22,28 @@ function Login() {
             setMessage('')
             setErrorMessage('')
         }
-
         reset()
-    }, [username, password])
+    }, [email, password])
 
 
     const handleSubmit = async () => {
         // console.log(loading)
         setLoading(!loading)
-        if (username === '' || password === '') {
+        if (email === '' || password === '') {
             setErrorMessage('Please Enter Username and Password')
             setLoading(loading)
             return;
         }
         setErrorMessage(null)
-        const response = await fetch(`${DOMAIN}/login`, {
+        const response = await fetch(`${DOMAIN}/sign-in`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
+
+
             },
-            body: JSON.stringify({ username, password })
+            credentials: 'include',
+            body: JSON.stringify({ email, password })
         })
 
         const data = await response.json()
@@ -61,16 +63,35 @@ function Login() {
 
     }
     // navigate('/main')
-    const isSuccess = async () => {
+    const google = async () => {
 
-        const check = await signInWithGoogle()
+        const user = await signInWithGoogle()
 
-        if (check) {
-            navigate('/main')
+        if (user) {
+            console.log(user)
+            try {
+                const response = await fetch(`${DOMAIN}/signIn-with-google`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify({ user: user })
+                })
+                const data = await response.json()
+
+                console.log(data)
+                navigate('/main')
+            } catch (error) {
+                console.log(error)
+            }
         }
-
-
     }
+
+    const facebook = async () => {
+        await signInWithFaceBook()
+    }
+
 
 
     return (
@@ -98,12 +119,12 @@ function Login() {
                         {/* <h2>Log In</h2> */}
 
                         {/* <p style={{color:'black',fontSize:'12px'}}>sample account</p>  */}
-                        <span style={{ color: 'black', fontSize: '16px', marginRight: '10px' }}> username:user</span>
+                        <span style={{ color: 'black', fontSize: '16px', marginRight: '10px' }}> username:user@gmail.com</span>
                         <span style={{ color: 'black', fontSize: '16px' }}> password:user</span>
                         <form className="formm">
 
                             {errorMessage ? <span style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</span> : message === 'User Login Success' ? <span style={{ color: 'green', textAlign: 'center' }}>{message}</span> : <span style={{ color: 'red', textAlign: 'center' }}>{message}</span>}
-                            <input type="text" value={username} placeholder="Username" className="form-input" onChange={(event) => setUsername(event.target.value)} />
+                            <input type="text" value={email} placeholder="email" className="form-input" onChange={(event) => setEmail(event.target.value)} />
                             <input type="password" value={password} placeholder="Password" className="form-input" onChange={(event) => setPassword(event.target.value)} />
                             <button type="button" className="login-button" onClick={() => handleSubmit()}>LOG IN</button>
                         </form>
@@ -113,8 +134,8 @@ function Login() {
                         </div>
                         <p>OR</p>
                         <div className="social-buttons">
-                            <button className="social-button facebook">Facebook</button>
-                            <button className="social-button google" onClick={isSuccess}>Google</button>
+                            <button className="social-button facebook" onClick={() => facebook()}>Facebook</button>
+                            <button className="social-button google" onClick={() => google()}>Google</button>
                         </div>
                         {/* <div className="sign-up">
                         <p>New to Shopee? <a href="#">Sign Up</a></p>

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithRedirect, signOut, getRedirectResult, signInWithPopup } from "firebase/auth";
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithRedirect, signOut, getRedirectResult, signInWithPopup, signInWithCredential,FacebookAuthProvider } from "firebase/auth";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -24,6 +24,8 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+facebookProvider.addScope('email');
 
 onAuthStateChanged(auth, (user) => {
 
@@ -38,12 +40,12 @@ onAuthStateChanged(auth, (user) => {
 
 
 
-// Sign in with redirect
+// Sign in with google
 const signInWithGoogle = async () => {
     try {
         const result = await signInWithPopup(auth, provider);
         console.log(result.user);
-        return "success"
+        return result
     } catch (error) {
         console.error(error);
     }
@@ -56,10 +58,21 @@ const listenForAuthChanges = (callback) => {
     });
 };
 
+// sign in with facebook
+const signInWithFaceBook = async() =>{
+    try {
+        const result = await signInWithPopup(auth, facebookProvider);
+        console.log(result.user);
+        return result
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
 const logout = async () => {
     await signOut(auth);
     console.log("User signed out");
 };
 
-export { signInWithGoogle, logout, listenForAuthChanges }
+export { signInWithGoogle, logout, listenForAuthChanges , facebookProvider, signInWithCredential,signInWithFaceBook}

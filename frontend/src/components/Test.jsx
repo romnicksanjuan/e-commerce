@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LoadingAnimation from './Loading';
+import DOMAIN from '../../config/config';
 const Test = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
@@ -23,6 +24,21 @@ const Test = () => {
     });
   };
 
+  const t = async () => {
+    const res = await fetch(`${DOMAIN}/test`,{
+        method:'GET',
+        credentials:'include',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+
+    const data = await res.json()
+
+    console.log(data)
+
+}
+
   const handleSubmit = () => {
     const totalPrice = selectedProducts.reduce((acc, item) => acc + item.price, 0);
     console.log('Selected products:', selectedProducts);
@@ -34,7 +50,7 @@ const Test = () => {
 
   return (
     <div style={{position:'relative', height:'100%',width:'100vh',backgroundColor:'black'}}>
-
+      <button onClick={() => t()} >test</button>
       <div className="loading"></div>
 
       {show ? <p style={{color:'red'}}>Helooo pota</p> : ''}

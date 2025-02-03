@@ -57,6 +57,7 @@ const Cart = () => {
         const getCart = async () => {
             const response = await fetch(`${DOMAIN}/cart`, {
                 method: 'GET',
+                credentials:'include'
             })
             // console.log(response)
             const data = await response.json()

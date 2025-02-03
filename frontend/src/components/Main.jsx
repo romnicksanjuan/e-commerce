@@ -24,7 +24,7 @@ const Main = () => {
     const [data, setData] = useState([])
     const [img, setImg] = useState([])
 
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
     const [base64Images, setBase64Images] = useState();
@@ -38,6 +38,7 @@ const Main = () => {
                 setLoading(!loading)
                 const response = await fetch(`${DOMAIN}/get-all-product`, {
                     method: 'GET',
+                    credentials: "include",
                     headers: {
                         'Content-Type': 'application/json',
                     }
@@ -95,6 +96,21 @@ const Main = () => {
         console.log(data)
         setImg(data.img)
         setData(data.products)
+    }
+
+    const t = async () => {
+        const res = await fetch(`${DOMAIN}/test`,{
+            method:'GET',
+            credentials:'include',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+
+        const data = await res.json()
+
+        console.log(data)
+
     }
 
     return (
@@ -173,6 +189,7 @@ const Main = () => {
 
                 }
             </div>
+            {/* <button onClick={() => t()}>token</button> */}
         </>
     )
 }

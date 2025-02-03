@@ -8,7 +8,7 @@ const Variant = require('../model/product-variant.model.js');
 const createProduct = async (req, res) => {
     const product = { ...req.body }
 
-    console.log(product)
+    // console.log(product)
 
 
     const variantColors = product.variantColor; // Parse the JSON array
@@ -91,7 +91,7 @@ const createProduct = async (req, res) => {
 const getAllProduct = async (req, res) => {
     try {
         const product = await Product.find({}).populate('variants')
-        console.log(product)
+        // console.log(product)
 
         const imageBuffer = product.map((p, index) => {
             const convert = p.images[0].data.toString('base64')
@@ -191,12 +191,13 @@ const Test = async (req, res) => {
 const addToCart = async (req, res) => {
     const { productId, variantId, quantity, sizeId } = req.body
     console.log(req.body)
-    const userId = '6775518d6b56f2315dd50c59'
+    const userId = req.userId
+    console.log("userId:", userId)
     const product = await Product.findOne({
         'variants': variantId
     });
 
-    console.log('p', product)
+    // console.log('p', product)
 
     const cart = await Cart.findOne({ user_id: userId })
 
@@ -208,14 +209,18 @@ const addToCart = async (req, res) => {
 
     const saveCart = await addNewCart.save()
     // console.log('cart saved successfully:', saveCart)
-    res.json({message: 'item added'})
-    
+    res.json({ message: 'item added' })
+
 }
 
 
 const getCart = async (req, res) => {
+    const userId = req.userId
+    console.log("user Idddddddddddddd", req.userId)
     try {
-        const cart = await Cart.find()
+        const cart = await Cart.find(ROMNICK14
+            
+        )
             .populate('items.product_id')
             .populate('items.variant_id')
             .exec()  // Populate the variant_id field in items array
@@ -283,7 +288,7 @@ const deleteCart = async (req, res) => {
         const delCart = await Cart.findByIdAndDelete(id)
 
         if (delCart) {
-            res.status(200).json({message: 'deleted success'})
+            res.status(200).json({ message: 'deleted success' })
         }
     } catch (error) {
         console.log(error)

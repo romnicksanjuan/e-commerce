@@ -4,7 +4,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const router = require('./routes/routes.js')
 const productRouter = require('./routes/product-router.js')
+const cookieParser = require('cookie-parser')
 const app = express()
+
 
 
 const MOGNG_DB = 'mongodb+srv://romnick:1234@romnickdb.e14diyv.mongodb.net/e-commerce'
@@ -24,6 +26,7 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
+app.use(cookieParser())
 app.use('/', router)
 app.use('/', productRouter)
 
