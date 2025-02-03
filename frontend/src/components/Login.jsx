@@ -30,7 +30,7 @@ function Login() {
         // console.log(loading)
         setLoading(!loading)
         if (email === '' || password === '') {
-            setErrorMessage('Please Enter Username and Password')
+            setErrorMessage('Please Enter Email and Password')
             setLoading(loading)
             return;
         }

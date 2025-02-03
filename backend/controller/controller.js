@@ -20,7 +20,6 @@ const Login = async (req, res) => {
     console.log(email, password)
     try {
         const find = await User.findOne({ password })
-        console.log("useri id:", find._id)
         if (find) {
             const token = jwt.sign({ userId: find._id }, "romnickpogi", { expiresIn: '1d' })
             // console.log(token)
