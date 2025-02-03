@@ -55,8 +55,8 @@ const signInWithGoogle = async (req, res) => {
             console.log(token)
             res.cookie("token", token, {
                 httpOnly: true,   // ✅ Prevents JavaScript access (for security)
-                secure: false,    // ✅ Set to true in production with HTTPS
-                sameSite: "Lax", // ✅ Required for cross-origin requests
+                secure: true,    // ✅ Set to true in production with HTTPS
+                sameSite: "None", // ✅ Required for cross-origin requests
             })
             res.json({ message: "Login successful", token });
             return;
@@ -66,8 +66,44 @@ const signInWithGoogle = async (req, res) => {
         console.log(token)
         res.cookie("token", token, {
             httpOnly: true,   // ✅ Prevents JavaScript access (for security)
-            secure: false,    // ✅ Set to true in production with HTTPS
-            sameSite: "Lax", // ✅ Required for cross-origin requests
+            secure: true,    // ✅ Set to true in production with HTTPS
+            sameSite: "None", // ✅ Required for cross-origin requests
+        })
+        res.json({ message: "Login successful", token });
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+// sign in with facebook
+const signInWithFaceBook = async (req, res) => {
+    const { user } = req.body
+    // console.log(user)
+    try {
+        const findUser = await User.findOne({ uid: user.user.uid })
+        console.log(findUser)
+
+        if (!findUser) {
+            const newUser = new User({ uid: user.user.uid, email: user.user.email, name: user.user.displayName, authProvider: "facebook" })
+            const save = await newUser.save()
+            // console.log(save)
+            const token = jwt.sign({ userId: save._id }, "romnickpogi", { expiresIn: '1d' })
+            console.log(token)
+            res.cookie("token", token, {
+                httpOnly: true,   // ✅ Prevents JavaScript access (for security)
+                secure: true,    // ✅ Set to true in production with HTTPS
+                sameSite: "None", // ✅ Required for cross-origin requests
+            })
+            res.json({ message: "Login successful", token });
+            return;
+        }
+
+        const token = jwt.sign({ userId: findUser._id }, "romnickpogi", { expiresIn: '1d' })
+        console.log(token)
+        res.cookie("token", token, {
+            httpOnly: true,   // ✅ Prevents JavaScript access (for security)
+            secure: true,    // ✅ Set to true in production with HTTPS
+            sameSite: "None", // ✅ Required for cross-origin requests
         })
         res.json({ message: "Login successful", token });
     } catch (error) {
@@ -80,8 +116,8 @@ const logout = async (req, res) => {
     res.clearCookie("token", {
         // withCredentials: true,
         httpOnly: true,   // ✅ Prevents JavaScript access (for security)
-        secure: false,
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
     });
     res.json({ message: "Logged out successfully" });
 }
@@ -95,4 +131,4 @@ const test = (req, res) => {
 
 
 
-module.exports = { createUser, Login, signInWithGoogle, test, logout }
+module.exports = { createUser, Login, signInWithGoogle, test, logout, signInWithFaceBook }

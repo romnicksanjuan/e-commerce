@@ -89,7 +89,28 @@ function Login() {
     }
 
     const facebook = async () => {
-        await signInWithFaceBook()
+        
+        const user =await signInWithFaceBook()
+
+        if (user) {
+            console.log(user)
+            try {
+                const response = await fetch(`${DOMAIN}/signIn-with-facebook`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include",
+                    body: JSON.stringify({ user: user })
+                })
+                const data = await response.json()
+
+                console.log(data)
+                navigate('/main')
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 
 
