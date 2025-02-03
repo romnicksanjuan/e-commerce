@@ -218,9 +218,7 @@ const getCart = async (req, res) => {
     const userId = req.userId
     console.log("user Idddddddddddddd", req.userId)
     try {
-        const cart = await Cart.find(ROMNICK14
-            
-        )
+        const cart = await Cart.find({ user_id: userId })
             .populate('items.product_id')
             .populate('items.variant_id')
             .exec()  // Populate the variant_id field in items array
