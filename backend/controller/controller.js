@@ -129,6 +129,12 @@ const test = (req, res) => {
 }
 
 
+const checkToken = (req, res) => {
+    console.log('token is valid')
+    res.status(200).json({ message: "token is valid" })
+}
 
 
-module.exports = { createUser, Login, signInWithGoogle, test, logout, signInWithFaceBook }
+
+
+module.exports = { createUser, Login, signInWithGoogle, test, logout, signInWithFaceBook, checkToken }

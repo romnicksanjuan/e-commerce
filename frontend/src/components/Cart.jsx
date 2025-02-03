@@ -6,6 +6,7 @@ import style from '../css/Cart.module.css'
 import '../css/Header.css'
 import { IoBagHandleSharp, IoCartOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../firebase/firebase.js'
 
 // domain
 import DOMAIN from '../../config/config.js'
@@ -57,7 +58,7 @@ const Cart = () => {
         const getCart = async () => {
             const response = await fetch(`${DOMAIN}/cart`, {
                 method: 'GET',
-                credentials:'include'
+                credentials: 'include'
             })
             // console.log(response)
             const data = await response.json()
@@ -68,8 +69,15 @@ const Cart = () => {
         getCart()
     }, [])
 
-    const handlLogout = () => {
+    const handlLogout = async () => {
         if (window.confirm("Do you want to logout?")) {
+            logout()
+            const res = await fetch(`${DOMAIN}/logout`, {
+                method: 'POST',
+                credentials: 'include'
+            })
+            const data = await res.json()
+            console.log(data)
             navigate('/')
         }
     }
@@ -79,7 +87,7 @@ const Cart = () => {
             if (!window.confirm('do you want to remove this item')) {
                 return;
             }
-            
+
             const response = await fetch(`${DOMAIN}/delete-cart/${id}`, {
                 method: 'DELETE',
                 headers: { 'Content-Tyoe': 'Application/json' }
@@ -98,7 +106,7 @@ const Cart = () => {
     }
 
     const handleUnavailablePage = (e) => {
-       window.alert('this page is not available')
+        window.alert('this page is not available')
     }
     return (
         <div>

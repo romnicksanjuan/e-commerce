@@ -9,6 +9,8 @@ import '../css/Header.css'
 import { IoBagHandleSharp, IoCartOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
+import { logout } from '../firebase/firebase.js';
+
 // domain
 import DOMAIN from '../../config/config'
 
@@ -240,11 +242,18 @@ const AddToCart_Buy = () => {
   };
 
 
-  const handlLogout = () => {
+  const handlLogout = async() => {
     if (window.confirm("Do you want to logout?")) {
-      navigate('/')
+        logout()
+      const res =  await fetch(`${DOMAIN}/logout`,{
+            method:'POST',
+            credentials:'include'
+        })
+        const data = await res.json()
+        console.log(data)
+        navigate('/')
     }
-  }
+}
 
 
   const handleUnavailablePage = () => {

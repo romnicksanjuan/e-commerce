@@ -9,6 +9,7 @@ import Test from './components/Test.jsx';
 import Cart from './components/Cart.jsx';
 import Login from './components/Login.jsx';
 // import './App.css'
+import CheckToken from './components/CheckToken.jsx';
 
 function App() {
 
@@ -16,8 +17,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+
+          {/* check page */}
+          <Route path='/' element={<CheckToken />} />
+
           {/* login page */}
-          <Route path='/' element={<Login />} />
+          <Route path='/login' element={<Login />} />
 
           {/* main page */}
           <Route path='/main' element={< Main />} />

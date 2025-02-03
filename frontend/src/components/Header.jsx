@@ -6,6 +6,7 @@ import DOMAIN from '../../config/config';
 import { logout } from '../firebase/firebase.js';
 
 
+
 const Header = ({ result }) => {
     const navigate = useNavigate()
     const [query, setQuery] = useState('');
